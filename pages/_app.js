@@ -1,7 +1,27 @@
 import '../styles/globals.css'
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useEffect } from "react";
+import Layout from "../components/layouts/Layout";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+export default function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    require("bootstrap/dist/js/bootstrap.min.js");
+  }, []);
+
+  if(Component.getLayout){
+    return Component.getLayout(<Component {...pageProps} />);
+  }
+
+  return (
+    <>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+              integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+              crossorigin="anonymous"
+              referrerpolicy="no-referrer"
+          />
+          
+        <Component {...pageProps} />
+
+    </>
+  )
 }
-
-export default MyApp
