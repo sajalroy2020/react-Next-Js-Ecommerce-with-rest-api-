@@ -1,9 +1,9 @@
 import NewsCard from "./News_Card";
 import NewsData from "./News_Data";
 
-export default function News(){
+export default function News() {
 
-    return(
+    return (
         <section className="py-5 my-5">
             <div className="container">
                 <div className="row">
@@ -15,7 +15,7 @@ export default function News(){
 
 
                     {NewsData.map((item) => (
-                            <NewsCard key={item.id} item={item}/>
+                        <NewsCard key={item.id} item={item} />
                     ))}
 
 

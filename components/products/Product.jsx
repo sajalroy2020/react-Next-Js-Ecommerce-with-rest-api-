@@ -1,8 +1,29 @@
+import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "./Product_Card";
+import { getProductStart, getProductSuccess, getProductError } from "../../features/Auth/ProductsSlice";
+import { getProducts } from "../../servises/action/products";
+import { useEffect } from "react";
 
-export default function Product(){
-    return(
-        <section className="py-5 mb-5">
+export default function Product() {
+    const dispatch = useDispatch();
+    const products = useSelector((state) => state.products.products.products);
+
+    const getProductAction = async (cat_id) => {
+        dispatch(getProductStart());
+        try {
+            const { data } = await getProducts(cat_id);
+            dispatch(getProductSuccess(data.data.json_object));
+        } catch (error) {
+            dispatch(getProductError(error));
+        }
+    };
+
+    useEffect(() => {
+        getProductAction(1);
+    }, []);
+
+    return (
+        <section className="">
             <div className="container">
                 <div className="row">
                     <div className="text-center">
@@ -10,9 +31,11 @@ export default function Product(){
                         <div className="product_under"></div>
                         <p className="footer-text-2 pt-4 pb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas <br /> itaque eveniet beatae optio.</p>
                     </div>
-                    <ProductCard img="/all-img/product-img-1.jpg" name="Strawberry" kg="Per Kg" price="85$" icon="fas fa-shopping-cart me-2" btnText="Add to Cart" />
-                    <ProductCard img="/all-img/product-img-2.jpg" name="Berry" kg="Per Kg" price="70$" icon="fas fa-shopping-cart me-2" btnText="Add to Cart" />
-                    <ProductCard img="/all-img/product-img-3.jpg" name="Lemon" kg="Per Kg" price="35$" icon="fas fa-shopping-cart me-2" btnText="Add to Cart" />
+
+                    {products && products.map((items) => (
+                        <ProductCard key={items.id} items={items} />
+                    ))}
+
                 </div>
             </div>
         </section>

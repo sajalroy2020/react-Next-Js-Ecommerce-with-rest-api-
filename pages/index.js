@@ -8,19 +8,18 @@ import Product from "../components/products/Product";
 import Support from "../components/support/Support";
 import HomeMain from "./Home_main";
 
-export default function Home(){
+const Home = () => {
   return (
     <div>
-        <HomeMain/>
-        <Support/>
-        <Product/>
-        <DiscountProduct/>
-        <FruitikaVideo/>
-        <MOnthlyDiscount/>
-        <News/>
-        <CompanyLogo/>
+      <HomeMain />
+      <Support />
+      <Product />
+      <DiscountProduct />
+      <FruitikaVideo />
+      <MOnthlyDiscount />
+      <News />
+      <CompanyLogo />
     </div>
   )
 }
-
-Home.getLayout = NestedLayout;
+export default Home;

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
-export default function DiscountProduct(){
-    return(
+export default function DiscountProduct() {
+    return (
         <>
             <section className='discount_bg py-5 mt-5'>
                 <div className="container">

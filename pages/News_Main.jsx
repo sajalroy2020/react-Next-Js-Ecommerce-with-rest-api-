@@ -1,12 +1,13 @@
 import CompanyLogo from "../components/company_logos/Cmpany_Logos";
 import NestedLayout from "../components/layouts/Nested_Layout";
 import News from "../components/news/News";
+import { ssrAuthCheck } from "../middleware/authCheck";
 
-export default function NewsMain(){
+export default function NewsMain() {
 
-        
 
-    return(
+
+    return (
         <>
             <div className="about_bg">
                 <div className="text-center about_text">
@@ -17,12 +18,18 @@ export default function NewsMain(){
             <section className="pb-5 my-5">
                 <div className="container">
                     <div className="row">
-                        <News/>
+                        <News />
                     </div>
                 </div>
             </section>
-            <CompanyLogo/>
+            <CompanyLogo />
         </>
     )
 }
-NewsMain.getLayout = NestedLayout;
+// NewsMain.getLayout = NestedLayout;
+
+NewsMain.getInitialProps = async (ctx) => {
+    await ssrAuthCheck(ctx, 'NewsMain');
+    return {};
+}
+

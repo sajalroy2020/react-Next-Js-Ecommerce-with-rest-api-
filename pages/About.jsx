@@ -1,11 +1,12 @@
 import AboutComponent from "../components/about/About_Component";
 import NestedLayout from "../components/layouts/Nested_Layout";
 
-export default function About(){
-    return(
+const About = () => {
+    return (
         <>
-            <AboutComponent/>
+            <AboutComponent />
         </>
     )
 }
-About.getLayout = NestedLayout;
+// About.getLayout = NestedLayout;
+export default About;

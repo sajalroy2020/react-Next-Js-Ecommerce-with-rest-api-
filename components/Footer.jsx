@@ -1,5 +1,8 @@
-export default function Footer(){
-    return(
+import { CiPaperplane } from 'react-icons/ci';
+
+
+const Footer = () => {
+    return (
         <>
             <footer className="bg_2 py-5">
                 <div className="container">
@@ -31,7 +34,7 @@ export default function Footer(){
                             <p className="footer-text-2">Subscribe to our mailing list to get the latest updates.</p>
                             <div className="">
                                 <input className="footer_input" type="text" placeholder="Email" />
-                                <button className="footer_input_btn ms-1"><i className="fas fa-paper-plane"></i></button>
+                                <button className="footer_input_btn ms-1"><CiPaperplane /></button>
                             </div>
                             <div className="social_icon pt-4">
                                 <i className="fab fa-facebook"></i>
@@ -46,3 +49,5 @@ export default function Footer(){
         </>
     )
 }
+
+export default Footer;
